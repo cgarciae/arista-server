@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/materialize.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div class="navbar-fixed">
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="/files" class="brand-logo">ARISTA DEV</a>
+            <ul class="right hide-on-med-and-down" style="position: relative; top: 50%; transform: translateY(-50%);">
+                <li>
+                    <a href="/files">
+                        Files
+                    </a>
+                </li>
+            </ul>
+
+            <ul id="nav-mobile" class="side-nav">
+                <a href="/maquinas">
+                    Maquinas
+                </a>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+    </nav>
+</div>
+
+<div style="min-height: 300px">
+    {{{view}}}
+</div>
+<br><br>
+
+<footer class="page-footer green darken-2">
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <h5 class="white-text">Escobar Trading Inc.</h5>
+
+                <p class="grey-text text-lighten-4">Con 20 años de experiencia, tenemos los contactos para localizar
+                    las maquinas mas dificiles de encontrar. Si necesitas una maquina que no esta en el catalogo
+                    contactanos y encontraremos justo la que necesitas.</p>
+
+
+            </div>
+            <div class="col offset-s1 s3">
+                <h5 class="white-text">Colombia</h5>
+                <ul>
+
+                    <li><a class="white-text" href="mailto:octavio@escobartrading.com">octavio@escobartrading.com</a></li>
+                    <li><a class="white-text" href="tel:+573128958782">+57 312 895 8782</a></li>
+                    <li><a class="white-text" href="#">skype: octavio.garesco</a></li>
+                </ul>
+            </div>
+            <div class="col offset-s1 s3">
+                <h5 class="white-text">Chile</h5>
+                <ul>
+
+                    <li><a class="white-text" href="mailto:ealzerreca@eabmaquinaria.cl">ealzerreca@eabmaquinaria.cl</a></li>
+                    <li><a class="white-text" href="tel:+56998472397">+569 9847 2397</a></li>
+                    <li><a class="white-text" href="#">skype: enrique.alzerreca.bascunan</a></li>
+                </ul>
+            </div>
+            <div class="col offset-s1 s3">
+                <h5 class="white-text">USA</h5>
+                <ul>
+
+                    <li><a class="white-text" href="mailto:enrique@escobartrading.com">enrique@escobartrading.com</a></li>
+                    <li><a class="white-text" href="tel:+17863997280">+1 786 399 7280</a></li>
+                    <li><a class="white-text" href="#">skype: ejehome</a></li>
+                </ul>
+            </div>
+            <div class="col offset-s1 s3">
+                <h5 class="white-text">USA</h5>
+                <ul>
+
+                    <li><a class="white-text" href="mailto:andrea@escobartrading.com">andrea@escobartrading.com</a></li>
+                    <li><a class="white-text" href="tel:+17863064597">+1 786 306 4597</a></li>
+                    <li><a class="white-text" href="#">skype: maescobar8014</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    $(".button-collapse").sideNav();
+</script>
+
+</body>
+</html>

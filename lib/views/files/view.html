@@ -1,0 +1,37 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<br/><br/>
+<div class="container">
+    <div class="card">
+
+        <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{{filename}}</span>
+            <p>Content Type: {{contentType}}</p>
+            <p>Upload Date: {{fileUploadDate}}</p>
+        </div>
+        {{# isImage}}
+        <div class="card-image">
+            <img src="{{imageHref}}">
+        </div>
+        {{/ isImage}}
+    </div>
+    <a class="waves-effect waves-light btn blue"
+       target="_blank"
+       href="{{imageHref}}"
+       style="float: left;">
+        <i class="material-icons right">file_download</i>Download
+    </a>
+    <a class="waves-effect waves-light btn red"
+       href="{{localhost}}/files/{{fileId}}/delete"
+        style="float: right;">
+        <i class="material-icons right">delete</i>DELETE
+    </a>
+</div>
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large blue"
+       href="/files">
+        <i class="large material-icons">reply</i>
+    </a>
+</div>

@@ -1,0 +1,28 @@
+name: arista-server
+description: 
+version: 0.1.0
+author: Cristian Garcia <cgarcia.e88@gmail.com>
+dependencies:
+  redstone_mvc:
+    path: "../redstone-mvc-plugin"
+  redstone_headers_plugin:
+    path: "../redstone-headers-plugin"
+  redstone_cookies_plugin:
+    path: "../redstone_cookies_plugin"
+  redstone_security_plugin:
+    path: "../redstone_security_plugin"
+  redstone_mapper_pg:
+    path: "../redstone_mapper_pg"
+  redstone_configuration_plugin:
+    path: "../redstone_configuration_plugin"
+  redstone_mapper:
+    path: "../redstone_mapper"
+
+  redstone: '>=0.6.0-beta.1+3 < 0.7.0'
+  shelf: '>=0.6.0 <0.7.0'
+  postgresql: #^0.3.1+1
+    path: "../dart_postgresql"
+  googleapis_auth: ^0.2.3+1
+  googleapis: ^0.12.1
+  uuid: "^0.5.0"
+  shelf_static: "^0.2.3"

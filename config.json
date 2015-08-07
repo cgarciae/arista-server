@@ -1,0 +1,8 @@
+{
+  "google": {
+    "identifier": "287932517253-d6fp73ms7d33ith6r561p1g225q5th0h.apps.googleusercontent.com",
+    "secret": "13COFGOsXLcu2PQNN5YdRcin",
+    "scopes": ["openid", "email"],
+    "redirectUrl": "http://localhost:9090/users/authenticate"
+  }
+}
