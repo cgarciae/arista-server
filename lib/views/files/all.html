@@ -4,17 +4,20 @@
 <br/><br/>
 <div class="container">
     {{# .}}
-    <a href="{{localhost}}files/{{fileId}}/view" style="color: inherit; text-decoration: none;">
-        <div class="card {{# isImage}}small{{/ isImage}}">
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{filename}}</span>
-                <p>{{contentType}}</p>
-            </div>
+    <a href="{{localhost}}/files/{{fileId}}/view" style="color: inherit; text-decoration: none;">
+        <div class="card row">
             {{# isImage}}
-            <div class="card-image">
+            <div class="card-image col s3">
+                <br/>
                 <img src="{{imageHref}}">
+                <br/>
+                <br/>
             </div>
             {{/ isImage}}
+            <div class="card-content col s9">
+                <p style="overflow: hidden;"><b>File name:</b> {{filename}}</p>
+                <p><b>Content Type:</b> {{contentType}}</p>
+            </div>
         </div>
     </a>
     {{/ .}}

@@ -2,8 +2,9 @@ part of arista_server.utilities;
 
 class PostgresController<T> extends PostgreSqlService<T> {
   final String tableName;
+  final String primaryKeyName;
 
-  PostgresController(this.tableName, PostgreSql conn)
+  PostgresController(this.tableName, this.primaryKeyName, PostgreSql conn)
       : super.fromConnection(conn);
 
   Future<List<T>> find ({String condition, values: const {}}) {
@@ -13,12 +14,27 @@ class PostgresController<T> extends PostgreSqlService<T> {
     """, values);
   }
 
-  Future<T> findByPrimaryKey(String keyName, keyValue) async {
+  Future<T> findOne ({String condition, values: const {}}) async {
+    var list = await query("""
+      SELECT * FROM "$tableName"
+      ${condition != null? "WHERE $condition": ""}
+      LIMIT 1
+    """, values);
+    try {
+      return list.first;
+    }
+    catch (e) {
+      return null;
+    }
+  }
+
+
+  Future<T> findByPrimaryKey(keyValue) async {
     List<T> list = await query("""
       SELECT * FROM "$tableName"
-      WHERE "$keyName" = @$keyName
+      WHERE "$primaryKeyName" = @$primaryKeyName
       LIMIT 1
-    """, {keyName: keyValue});
+    """, {primaryKeyName: keyValue});
 
     return list.first;
   }
@@ -38,17 +54,17 @@ class PostgresController<T> extends PostgreSqlService<T> {
     """, map);
   }
 
-  Future updateOnKey(T delta, String keyName, keyValue) {
+  Future updateOnPrimaryKey(T delta, keyValue) {
     var fields = _fieldStructure(delta);
     var values = _valueStructure(delta);
 
     Map valuesMap = encode(delta);
-    valuesMap[keyName] = keyValue;
+    valuesMap[primaryKeyName] = keyValue;
 
     return query("""
       UPDATE $tableName
         SET $fields = $values
-      WHERE "$keyName" = @$keyName
+      WHERE "$primaryKeyName" = @$primaryKeyName
       """, valuesMap);
   }
 
@@ -63,14 +79,12 @@ class PostgresController<T> extends PostgreSqlService<T> {
       """, delta);
   }
 
-  Future deleteOnKey(String keyName, keyValue) {
-
-    print(keyValue);
+  Future deleteOnPrimaryKey(keyValue) {
 
     return query("""
       DELETE FROM $tableName
-      WHERE "$keyName" = @$keyName
-      """, {keyName: keyValue});
+      WHERE "$primaryKeyName" = @$primaryKeyName
+      """, {primaryKeyName: keyValue});
   }
 
   Future deleteOnCondition(T obj, String whereCondition) {

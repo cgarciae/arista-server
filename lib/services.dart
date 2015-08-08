@@ -4,9 +4,10 @@ library arista_server.services;
 import 'package:redstone/redstone.dart' as app;
 //mvc
 import 'package:redstone_mvc/redstone_mvc.dart';
+//plugins
+import 'package:redstone_security_plugin/redstone_security_plugin.dart' show AdmittedRoles, UserId;
 //postgres
 import 'package:redstone_mapper_pg/manager.dart' show PostgreSql;
-import 'package:redstone_mapper_pg/service.dart';
 //arista
 import 'utilities.dart';
 import 'config.dart';

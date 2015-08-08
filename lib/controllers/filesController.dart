@@ -2,7 +2,7 @@ part of arista_server.controllers;
 
 @Controller('/files')
 class FilesController extends FileServices {
-  FilesController(PostgreSql conn): super(conn);
+  FilesController(PostgreSql conn, Env env): super(conn, env);
 
   @DefaultGetView(viewSubPath: '/all')
   allFiles() async {
@@ -13,15 +13,21 @@ class FilesController extends FileServices {
   @GetView('/new')
   newFormView() => {};
 
-  @PostJson('/upload', allowMultipartRequest: true)
+  @Post('/upload', allowMultipartRequest: true)
   uploadFile(@app.Body(app.FORM) DynamicMap form) async {
     var fileDb = await newFile(form.file, filename: form.filename);
     return app.redirect('/files/${fileDb.fileId}/view');
   }
 
+  @Post ('/:fileId/change', allowMultipartRequest: true)
+  changeFile (String fileId, @app.Body(app.FORM) DynamicMap form) async {
+    await updateFile(fileId, form.file);
+    return app.redirect('/files/$fileId/view');
+  }
+
   @GetView("/:fileId/view", viewLocalPath: '/view')
   viewFile (String fileId) async {
-    var fileDb = await findByPrimaryKey('fileId', fileId);
+    var fileDb = await findByPrimaryKey(fileId);
     return fileDbViewMap(fileDb);
   }
 
@@ -31,11 +37,11 @@ class FilesController extends FileServices {
     return app.redirect('/files');
   }
 
-  Map fileDbViewMap (FileDb fileDb) {
+  Map fileDbViewMap (FileSchema fileDb) {
     var map = encode(fileDb);
     map['isImage'] = fileDb.contentType.contains('image');
-    map['localHost'] = localHost;
-    map['imageHref'] = localHost + 'api/files/${fileDb.fileId}';
+    map['localHost'] = env.fullHost;
+    map['imageHref'] = env.fullHost + '/api/files/${fileDb.fileId}';
 
     return map;
   }

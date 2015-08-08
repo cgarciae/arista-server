@@ -1,16 +1,15 @@
 part of arista_server.models;
 
-class User
+class UserSchema
 {
-  @Field() String get href => userId != null ? localHost + 'user/$userId' : null;
-
   @Field() String userId;
   @Field() String nombre;
   @Field() String apellido;
   @Field() String email;
-}
-
-class ProtectedUser extends User {
   @Field() num money;
   @Field() bool admin;
+}
+
+class User extends UserSchema {
+  @Field() List<String> roles;
 }

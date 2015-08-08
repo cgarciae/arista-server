@@ -1,6 +1,6 @@
 part of arista_server.models;
 
-class FileDb
+class FileSchema
 {
   @Field() String fileId;
   @Field() String filename;

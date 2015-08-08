@@ -8,15 +8,15 @@ class UsersController extends UserServices {
   login() => {};
 
   @Get('/redirect')
-  redirect(@ConfigurationField() app.DynamicMap google) async {
-    var id = new auth.ClientId(google.identifier, google.secrete);
+  redirect(@ConfigurationField() GoogleConfig google) async {
+    var id = new auth.ClientId(google.identifier, google.secret);
     var url = authenticationUri(id, google.scopes, google.redirectUrl);
     return app.redirect(url);
   }
 
   @GetJson("/authenticate")
   authenticate(@app.QueryParam() String code,
-      @ConfigurationField() app.DynamicMap google) async {
+      @ConfigurationField() GoogleConfig google) async {
     var id = new auth.ClientId(google.identifier, google.secret);
     var baseClient = new http.Client();
 
@@ -31,7 +31,27 @@ class UsersController extends UserServices {
     client.close();
     baseClient.close();
 
-    return new User()..email = userInfo.email;
+    var user = new UserSchema()
+      ..email = userInfo.email
+      ..nombre = userInfo.name
+      ..apellido = userInfo.familyName
+      ..userId = new Uuid().v1();
+
+    Row resp = await innerConn.query("""
+      SELECT EXISTS(SELECT 1 FROM users WHERE "email" = '${user.email}');
+    """).first;
+
+    if (!resp.exists) {
+      await insert(user);
+    } else {
+      user = await findOne(condition: """
+        "email" = @email
+      """, values: user);
+    }
+
+    return new shelf.Response.ok(encodeJson(user), headers: {
+      "Set-Cookie": new ck.Cookie('userId', user.userId).toString()
+    });
   }
 
   String authenticationUri(

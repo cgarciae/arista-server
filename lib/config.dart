@@ -1,9 +1,49 @@
 library arista_server.config;
 
+//mapper
+import 'package:redstone_mapper/mapper.dart';
+//path
 import 'package:path/path.dart' as path;
 
-const int tipoBuild = TipoBuild.desarrollo;
 
+
+
+class Env {
+  @Field() String name;
+  @Field() int buildPriority;
+  @Field() String boot2docker_ip;
+  @Field() String host_ip;
+  @Field() String staticFolder;
+  @Field() String filesPath_;
+  @Field() String appHost;
+  @Field() int appPort;
+  @Field() String dbHost;
+  @Field() int dbPort;
+  @Field() String dbUser;
+  @Field() String dbPassword;
+  @Field() String dbName;
+
+  String get fullHost => "http://$appHost:$appPort";
+  String get filesPath => filesPath_.replaceFirst("{{current}}", path.current);
+}
+
+class GoogleConfig {
+  @Field() String identifier;
+  @Field() String secret;
+  @Field() List<String> scopes;
+  @Field() String redirectUrl;
+}
+
+class BuildPriority
+{
+  static const int dev =  0;
+  static const int js =  1;
+  static const int docker =  2;
+  static const int prod =  3;
+}
+
+/*
+const int tipoBuild = TipoBuild.desarrollo;
 int get port => 9090;
 
 final String boot2docker_ip = "192.168.59.103";
@@ -59,3 +99,4 @@ String get filesPath {
       return "/data/files";
   }
 }
+*/

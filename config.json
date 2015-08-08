@@ -4,5 +4,35 @@
     "secret": "13COFGOsXLcu2PQNN5YdRcin",
     "scopes": ["openid", "email"],
     "redirectUrl": "http://localhost:9090/users/authenticate"
+  },
+
+  "environments_" : {
+    "current_": "dev",
+    "general_": {
+      "boot2docker_ip": "192.168.59.103",
+      "host_ip": "45.55.155.202",
+      "staticFolder": "web",
+      "dbUser": "arista",
+      "dbPassword": "arista1234",
+      "dbName": "postgres"
+    },
+    "dev": {
+      "name": "dev",
+      "buildPriority": 0,
+      "appHost": "localhost",
+      "appPort": 9090,
+      "dbHost": "192.168.59.103",
+      "dbPort": 5432,
+      "filesPath_": "{{current}}/files"
+    },
+    "prod": {
+      "name": "prod",
+      "buildPriority": 3,
+      "appHost": "45.55.155.202",
+      "appPort": 80,
+      "dbHost": "db",
+      "dbPort": 5432,
+      "filesPath": "/data/files"
+    }
   }
 }

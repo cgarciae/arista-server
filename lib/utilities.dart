@@ -13,3 +13,11 @@ import 'package:redstone_mapper_pg/manager.dart' show PostgreSql;
 import 'dart:async';
 
 part 'utilities/postgres_generic_controller.dart';
+
+cast (obj, Type type) => decode(encode(obj), type);
+
+class Role {
+  static const String superAdmin = "superAdmin";
+  static const String admin = "admin";
+  static const String user = "user";
+}
