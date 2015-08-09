@@ -1,7 +1,7 @@
 library arista_server.controllers;
 
 //redstone
-import 'package:redstone/redstone.dart' as app;
+import 'package:redstone/redstone.dart';
 import 'package:redstone/src/dynamic_map.dart';
 //postgres
 import 'package:postgresql/postgresql.dart';
@@ -9,7 +9,7 @@ import 'package:postgresql/postgresql.dart';
 import 'package:redstone_mapper_pg/manager.dart' show PostgreSql;
 import 'package:redstone_mapper/mapper.dart';
 //arista
-import 'services.dart';
+import 'utilities.dart';
 import 'models.dart';
 import 'config.dart';
 //mvc
@@ -27,6 +27,18 @@ import 'package:uuid/uuid.dart';
 import 'package:shelf/shelf.dart' as shelf;
 //cookies
 import 'package:cookies/cookies.dart' as ck;
+//dart
+import 'dart:async';
+import 'dart:io';
+import 'dart:convert';
+//plugins
+import 'package:redstone_security_plugin/redstone_security_plugin.dart' show AdmittedRoles, UserId;
+//http
+import 'package:http_server/src/http_body.dart';
 
+//controllers
 part 'controllers/usersController.dart';
 part 'controllers/filesController.dart';
+//services
+part 'services/usersServices.dart';
+part 'services/filesServices.dart';

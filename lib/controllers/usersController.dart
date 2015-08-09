@@ -8,14 +8,14 @@ class UsersController extends UserServices {
   login() => {};
 
   @Get('/redirect')
-  redirect(@ConfigurationField() GoogleConfig google) async {
+  redirectUrl(@ConfigurationField() GoogleConfig google) async {
     var id = new auth.ClientId(google.identifier, google.secret);
     var url = authenticationUri(id, google.scopes, google.redirectUrl);
-    return app.redirect(url);
+    return redirect(url);
   }
 
   @GetJson("/authenticate")
-  authenticate(@app.QueryParam() String code,
+  authenticate(@QueryParam() String code,
       @ConfigurationField() GoogleConfig google) async {
     var id = new auth.ClientId(google.identifier, google.secret);
     var baseClient = new http.Client();

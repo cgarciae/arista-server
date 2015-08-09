@@ -1,4 +1,4 @@
-part of arista_server.services;
+part of arista_server.controllers;
 
 @Controller('/api/files')
 class FileServices extends PostgresController<FileSchema> {
@@ -42,7 +42,7 @@ class FileServices extends PostgresController<FileSchema> {
     }
   }
 
-  @app.Route('/:id')
+  @Get('/:id')
   Future<shelf.Response> downloadFile(String id) async {
     try {
       var metadata = await getMetadata(id);

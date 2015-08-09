@@ -14,15 +14,15 @@ class FilesController extends FileServices {
   newFormView() => {};
 
   @Post('/upload', allowMultipartRequest: true)
-  uploadFile(@app.Body(app.FORM) DynamicMap form) async {
+  uploadFile(@Body(FORM) DynamicMap form) async {
     var fileDb = await newFile(form.file, filename: form.filename);
-    return app.redirect('/files/${fileDb.fileId}/view');
+    return redirect('/files/${fileDb.fileId}/view');
   }
 
   @Post ('/:fileId/change', allowMultipartRequest: true)
-  changeFile (String fileId, @app.Body(app.FORM) DynamicMap form) async {
+  changeFile (String fileId, @Body(FORM) DynamicMap form) async {
     await updateFile(fileId, form.file);
-    return app.redirect('/files/$fileId/view');
+    return redirect('/files/$fileId/view');
   }
 
   @GetView("/:fileId/view", viewLocalPath: '/view')
@@ -34,7 +34,7 @@ class FilesController extends FileServices {
   @Get('/:fileId/delete')
   deleteFile(String fileId) async {
     await super.deleteFile(fileId);
-    return app.redirect('/files');
+    return redirect('/files');
   }
 
   Map fileDbViewMap (FileSchema fileDb) {

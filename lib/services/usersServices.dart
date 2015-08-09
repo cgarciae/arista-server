@@ -1,16 +1,16 @@
-part of arista_server.services;
+part of arista_server.controllers;
 
 @Controller('/api/users')
-class UserServices extends PostgresController<UserSchema> {
+class UserServices extends PostgresController<UserSchema> implements SchemaBuilder<UserSchema> {
   UserServices(PostgreSql conn) : super('users', 'userId', conn);
 
   @GetJson('/:userId')
   @AdmittedRoles(const [Role.admin])
-  Future<UserSchema> getUser(String userId, {@app.QueryParam() String build, @app.QueryParam() String recursive}) async {
+  Future<UserSchema> getUser(String userId, {@QueryParam() bool build, @QueryParam() bool recursive}) async {
     var user = await findByPrimaryKey(userId);
 
-    if (build == 'true') {
-      user = await buildFromSchema(user, recursive: recursive == 'true');
+    if (build) {
+      user = await buildFromSchema(user, recursive: recursive);
     }
 
     return user;

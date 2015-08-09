@@ -16,8 +16,14 @@ part 'utilities/postgres_generic_controller.dart';
 
 cast (obj, Type type) => decode(encode(obj), type);
 
+notNullOrEmpty (String s) => s != null && s != '';
+
 class Role {
   static const String superAdmin = "superAdmin";
   static const String admin = "admin";
   static const String user = "user";
+}
+
+abstract class SchemaBuilder<T> {
+  buildFromSchema(T schema, {bool recursive});
 }
