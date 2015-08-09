@@ -1,6 +1,7 @@
 part of arista_server.models;
 
 class ObjetoUnitySchema {
+  @Field() String objetoUnityId;
   @Field() String nombre;
   @Field() String descripcion;
   @Field() bool public;

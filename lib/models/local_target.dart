@@ -1,6 +1,7 @@
 part of arista_server.models;
 
 class LocalTargetSchema {
+  @Field() String localTargetId;
   @Field() String nombre;
   @Field() bool public;
   @Field() String ownerId;

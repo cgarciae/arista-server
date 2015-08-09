@@ -43,13 +43,15 @@ class UsersController extends UserServices {
 
     if (!resp.exists) {
       await insert(user);
+      await addRole(user.userId, 2);
     } else {
       user = await findOne(condition: """
         "email" = @email
       """, values: user);
     }
 
-    return new shelf.Response.ok(encodeJson(user), headers: {
+    return new shelf.Response.ok(encodeJson(user),
+        headers: {
       "Set-Cookie": new ck.Cookie('userId', user.userId).toString()
     });
   }
