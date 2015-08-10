@@ -7,7 +7,7 @@ class PostgresController<T> extends PostgreSqlService<T> {
   PostgresController(this.tableName, this.primaryKeyName, PostgreSql conn)
       : super.fromConnection(conn);
 
-  Future<List<T>> find ({String condition, values: const {}}) {
+  Future<List<T>> find ([String condition, values= const {}]) {
     return query("""
       SELECT * FROM "$tableName"
       ${condition != null? "WHERE $condition": ""}
@@ -49,7 +49,7 @@ class PostgresController<T> extends PostgreSqlService<T> {
     }
 
     return query("""
-      INSERT INTO $tableName $fieldStructure
+      INSERT INTO "$tableName" $fieldStructure
         VALUES $valueStructure;
     """, map);
   }
@@ -61,8 +61,9 @@ class PostgresController<T> extends PostgreSqlService<T> {
     Map valuesMap = encode(delta);
     valuesMap[primaryKeyName] = keyValue;
 
+
     return query("""
-      UPDATE $tableName
+      UPDATE "$tableName"
         SET $fields = $values
       WHERE "$primaryKeyName" = @$primaryKeyName
       """, valuesMap);
@@ -82,7 +83,7 @@ class PostgresController<T> extends PostgreSqlService<T> {
   Future deleteOnPrimaryKey(keyValue) {
 
     return query("""
-      DELETE FROM $tableName
+      DELETE FROM "$tableName"
       WHERE "$primaryKeyName" = @$primaryKeyName
       """, {primaryKeyName: keyValue});
   }

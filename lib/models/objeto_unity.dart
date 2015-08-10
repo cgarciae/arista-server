@@ -22,25 +22,16 @@ class ObjetoUnitySchema {
 
 class ObjetoUnity extends ObjetoUnitySchema {
   @Field() final String nameGameObject = "aristaGameObject";
-  @Field() String href;
 
   @Field() User owner;
   @Field() FileSchema userFile;
 
+  @Field() bool get active => notNullOrEmpty (androidId) && notNullOrEmpty (iosId);
+  @Field() bool get activeAll => notNullOrEmpty (androidId) && notNullOrEmpty (iosId) && notNullOrEmpty (windowsId) && notNullOrEmpty (osxId);
 
-  @Field() bool get active => activeAndroid && activeIOS;
-  @Field() bool get activeAll => activeAndroid && activeIOS && activeMAC && activeWindows;
   @Field() FileSchema screenshot;
-
   @Field() FileSchema android;
-  @Field() bool get activeAndroid => notNullOrEmpty (androidId);
-
   @Field() FileSchema ios;
-  @Field() bool get activeIOS => notNullOrEmpty (iosId);
-
   @Field() FileSchema windows;
-  @Field() bool get activeWindows => notNullOrEmpty (windowsId);
-
   @Field() FileSchema osx;
-  @Field() bool get activeMAC => notNullOrEmpty (osxId);
 }

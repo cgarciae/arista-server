@@ -4,6 +4,7 @@ class CloudTargetSchema {
   @Field() String cloudTargetId;
   @Field() String imageFileId;
   @Field() String vuforiaTargetId;
+  @Field() String ownerId;
 }
 
 class CloudTarget extends CloudTargetSchema {

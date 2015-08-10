@@ -42,3 +42,7 @@ part 'controllers/filesController.dart';
 //services
 part 'services/usersServices.dart';
 part 'services/filesServices.dart';
+part 'services/elementos_interactivos_services.dart';
+part 'services/vistas_services.dart';
+part 'services/objeto_unity_services.dart';
+part 'services/local_target_services.dart';

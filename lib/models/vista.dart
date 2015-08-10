@@ -4,20 +4,25 @@ class VistaSchema {
   //Info general
   @Field() String vistaId;
   @Field() String ownerId;
-  @Field() String type__;
   @Field() String nombre;
   @Field() String eventoId;
+  @Field() int type;
 
   bool get valid => throw new UnimplementedError();
-}
-class Vista3DSchema extends VistaSchema {
+
+  //Vista3D
   @Field() String objetoUnityId;
   @Field() String localTargetId;
 }
 
-class Vista3D extends Vista3DSchema {
+class Vista3D extends VistaSchema {
+  @Field() final String type__ = "FALTA";//TODO: FALTA
   @Field() User owner;
   @Field() ObjetoUnity objetoUnity;
   @Field() LocalTarget localTarget;
   @Field() List<ElementoInteractivo> elementosInteractivos;
+}
+
+abstract class TiposVista {
+  static const int vista3d = 1;
 }

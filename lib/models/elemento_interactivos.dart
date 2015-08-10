@@ -6,6 +6,8 @@ class ElementoInteractivoSchema {
   @Field() String titulo;
   @Field() String imagenId;
   @Field() String texto;
+  @Field() String vistaId;
+  @Field() String ownerId;
 }
 
 class ElementoInteractivo extends ElementoInteractivoSchema {

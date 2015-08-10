@@ -45,7 +45,11 @@ main() async {
     ..bind(UserServices)
     ..bind(UsersController)
     ..bind(FileServices)
-    ..bind(FilesController);
+    ..bind(FilesController)
+    ..bind(ElementosInteractivosServices)
+    ..bind(VistaServices)
+    ..bind(ObjetosUnityServices)
+    ..bind(LocalTargetsServices);
   //DI for ini
   var initModule = new Module()
     ..bind(PostgreSql, toValue: conn)
@@ -53,7 +57,11 @@ main() async {
     ..bind(UserServices)
     ..bind(UsersController)
     ..bind(FileServices)
-    ..bind(FilesController);
+    ..bind(FilesController)
+    ..bind(ElementosInteractivosServices)
+    ..bind(VistaServices)
+    ..bind(ObjetosUnityServices)
+    ..bind(LocalTargetsServices);
 
   addModule(requestModule);
   var requestInjector = new ModuleInjector([requestModule]);
@@ -97,7 +105,7 @@ class TestRoutes {
     return {'hola': hola};
   }
   @Get('/query-params')
-  testQueryParams (@QueryParam() bool check) => !check;
+  testQueryParams ({@QueryParam() bool check}) => !check;
 }
 
 @GetJson("/users/:id/change")

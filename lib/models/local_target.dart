@@ -15,16 +15,10 @@ class LocalTargetSchema {
 }
 
 class LocalTarget extends LocalTargetSchema {
-  @Field() String href;
   @Field() User owner;
-
   @Field() FileSchema image;
-
-  @Field () bool get active => activeDat == true && activeXml == true;
-
   @Field() FileSchema dat;
-  @Field() bool get activeDat => notNullOrEmpty(datId);
-
   @Field() FileSchema xml;
-  @Field() bool get activeXml => notNullOrEmpty(xmlId);
+
+  @Field () bool get active => notNullOrEmpty(datId) && notNullOrEmpty(xmlId);
 }

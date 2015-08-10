@@ -1,5 +1,6 @@
 part of arista_server.models;
 
+//NO TOCAR
 class VuforiaTargetRecordSchema {
   @Field() String target_id;
   @Field() bool active_flag;
