@@ -45,7 +45,7 @@ class ElementosInteractivosServices
       deleteOnPrimaryKey(elementoInteractivoId);
 
   @DefaultGetJson()
-  Future<List<ElementoInteractivoSchema>> allVistas() => find();
+  Future<List<ElementoInteractivoSchema>> allElementosInteractivos() => find();
 
   @override
   Future<ElementoInteractivo> buildFromSchema(ElementoInteractivoSchema schema,

@@ -1,14 +1,14 @@
 part of arista_server.controllers;
 
 @Controller('/api/vistas')
-class VistaServices extends PostgresController<VistaSchema>
+class VistasServices extends PostgresController<VistaSchema>
     implements SchemaBuilder<VistaSchema> {
   FileServices fileServices;
   ElementosInteractivosServices elementosInteractivosServices;
   ObjetosUnityServices objetosUnityServices;
   LocalTargetsServices localTargetServices;
 
-  VistaServices(this.localTargetServices, this.objetosUnityServices,
+  VistasServices(this.localTargetServices, this.objetosUnityServices,
       this.elementosInteractivosServices, this.fileServices, PostgreSql conn)
       : super('vistas', 'vistaId', conn);
 
@@ -63,18 +63,18 @@ class VistaServices extends PostgresController<VistaSchema>
 
     if (vista.objetoUnityId != null) vista.objetoUnity =
         await objetosUnityServices.getObjetosUnity(vista.objetoUnityId,
-            build: true, recursive: recursive);
+            build: recursive, recursive: recursive);
 
     if (vista.localTargetId != null) vista.localTarget =
         await localTargetServices.getLocalTarget(vista.localTargetId,
-            build: true, recursive: true);
+            build: recursive, recursive: recursive);
 
     if (recursive) {
       vista.elementosInteractivos = await Future.wait(
           vista.elementosInteractivos.map(
               (elem) async => elementosInteractivosServices
                   .getElementoInteractivo(elem.elementoInteractivoId,
-                      build: true, recursive: true)));
+                      build: recursive, recursive: recursive)));
     }
 
     return vista;

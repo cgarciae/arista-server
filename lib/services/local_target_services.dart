@@ -45,7 +45,7 @@ implements SchemaBuilder<LocalTargetSchema> {
   deleteOnPrimaryKey(localTargetId);
 
   @DefaultGetJson()
-  Future<List<LocalTargetSchema>> allVistas() => find();
+  Future<List<LocalTargetSchema>> allLocalTargets() => find();
 
   @override
   Future<LocalTarget> buildFromSchema(LocalTargetSchema schema,

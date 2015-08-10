@@ -47,9 +47,11 @@ main() async {
     ..bind(FileServices)
     ..bind(FilesController)
     ..bind(ElementosInteractivosServices)
-    ..bind(VistaServices)
+    ..bind(VistasServices)
     ..bind(ObjetosUnityServices)
-    ..bind(LocalTargetsServices);
+    ..bind(LocalTargetsServices)
+    ..bind(CloudTargetsServices)
+    ..bind(EventosServices);
   //DI for ini
   var initModule = new Module()
     ..bind(PostgreSql, toValue: conn)
@@ -59,9 +61,11 @@ main() async {
     ..bind(FileServices)
     ..bind(FilesController)
     ..bind(ElementosInteractivosServices)
-    ..bind(VistaServices)
+    ..bind(VistasServices)
     ..bind(ObjetosUnityServices)
-    ..bind(LocalTargetsServices);
+    ..bind(LocalTargetsServices)
+    ..bind(CloudTargetsServices)
+    ..bind(EventosServices);
 
   addModule(requestModule);
   var requestInjector = new ModuleInjector([requestModule]);

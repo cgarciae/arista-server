@@ -40,7 +40,7 @@ class ObjetosUnityServices extends PostgresController<ObjetoUnitySchema>
       deleteOnPrimaryKey(objetoUnityId);
 
   @DefaultGetJson()
-  Future<List<ObjetoUnitySchema>> allVistas() => find();
+  Future<List<ObjetoUnitySchema>> allObjetosUnity() => find();
 
   @override
   Future<ObjetoUnity> buildFromSchema(ObjetoUnitySchema schema,

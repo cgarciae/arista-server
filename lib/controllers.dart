@@ -46,3 +46,5 @@ part 'services/elementos_interactivos_services.dart';
 part 'services/vistas_services.dart';
 part 'services/objeto_unity_services.dart';
 part 'services/local_target_services.dart';
+part 'services/cloud_target_services.dart';
+part 'services/eventos_services.dart';
