@@ -5,7 +5,7 @@ class ObjetoUnitySchema {
   @Field() String nombre;
   @Field() String descripcion;
   @Field() bool public;
-  @Field() List<String> tags;
+  @Field() List<TagSchema> tags;
 
   @Field() String ownerId;
   @Field() String userFileId;

@@ -4,8 +4,9 @@ part of arista_server.controllers;
 class ObjetosUnityServices extends PostgresController<ObjetoUnitySchema>
     implements SchemaBuilder<ObjetoUnitySchema> {
   FileServices fileServices;
+  TagsServices tagsServices;
 
-  ObjetosUnityServices(this.fileServices, PostgreSql conn)
+  ObjetosUnityServices(this.tagsServices, this.fileServices, PostgreSql conn)
       : super('objetosUnity', 'objetoUnityId', conn);
 
   @GetJson('/:objetoUnityId')
@@ -65,6 +66,29 @@ class ObjetosUnityServices extends PostgresController<ObjetoUnitySchema>
     if (objeto.osxId != null) objeto.osx =
         await fileServices.getMetadata(objeto.osxId);
 
+    objeto.tags = await getTags(objeto.objetoUnityId);
+
+    if (recursive) {
+
+    }
+
     return objeto;
   }
+
+  @GetJson('/:objetoUnityId/tags')
+  Future<List<TagSchema>> getTags(String objetoUnityId) async {
+    return (await tagsServices.find("""
+        "objetoUnityId" = @objetoUnityId
+      """, {'objetoUnityId': objetoUnityId}))
+        .toList();
+  }
+
+  @PostJson('/:objetoUnityId/tags')
+  Future<TagSchema> insertTag(String objetoUnityId, @DecodeAny TagSchema tag) async {
+    tag
+      ..objetoUnityId = objetoUnityId;
+
+    return tagsServices.nuevoTag(tag);
+  }
+
 }

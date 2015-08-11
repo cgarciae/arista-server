@@ -1,0 +1,37 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<br/><br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <div class="card">
+                {{#evento}}
+                <form action="{{eventoId}}/save-info" class="card-content" method="post">
+                    <span class="card-title black-text">Info</span>
+                    <br/><br/>
+                    <div class="row">
+                        <h5 class="input-field col s6">
+                            <input id="nombre" type="text" class="validate" name="nombre" value="{{nombre}}">
+                            <label for="modelo">Nombre</label>
+                        </h5>
+                        <div class="input-field col s12">
+                            <textarea id="descripcion" style="height: 150px;" class="materialize-textarea" name="descripcion">{{descripcion}}</textarea>
+                            <label for="descripcion">Descripcion</label>
+                            <br/><br/>
+                        </div>
+                        <br/>
+
+                    </div>
+
+                    <button class="btn waves-effect waves-light right" type="submit" name="action">
+                        <i class="material-icons">save</i>
+                    </button>
+                    <br/><br/>
+                </form>
+                {{/evento}}
+            </div>
+        </div>
+    </div>
+</div>

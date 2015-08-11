@@ -19,6 +19,8 @@ import 'package:arista-server/models.dart';
 import 'package:arista-server/config.dart';
 import 'package:arista-server/controllers.dart';
 //import 'package:arista-server/models.dart';
+import 'dart:mirrors';
+
 Env env;
 
 main() async {
@@ -29,7 +31,9 @@ main() async {
 
   env = getEnvironmentAs(configurationBuilder, Env);
 
-  var uri = "postgres://${env.dbUser}:${env.dbPassword}@${env.dbHost}:${env.dbPort}/${env.dbName}";
+  //postgres
+  var uri =
+      "postgres://${env.dbUser}:${env.dbPassword}@${env.dbHost}:${env.dbPort}/${env.dbName}";
   var dbManager = new PostgreSqlManager(uri, min: 5, max: 15);
   await dbManager.start();
   var conn = await dbManager.getConnection();
@@ -51,7 +55,9 @@ main() async {
     ..bind(ObjetosUnityServices)
     ..bind(LocalTargetsServices)
     ..bind(CloudTargetsServices)
-    ..bind(EventosServices);
+    ..bind(EventosServices)
+    ..bind(VuforiaTargetRecordsServices)
+    ..bind(TagsServices);
   //DI for ini
   var initModule = new Module()
     ..bind(PostgreSql, toValue: conn)
@@ -65,7 +71,9 @@ main() async {
     ..bind(ObjetosUnityServices)
     ..bind(LocalTargetsServices)
     ..bind(CloudTargetsServices)
-    ..bind(EventosServices);
+    ..bind(EventosServices)
+    ..bind(VuforiaTargetRecordsServices)
+    ..bind(TagsServices);
 
   addModule(requestModule);
   var requestInjector = new ModuleInjector([requestModule]);
@@ -76,19 +84,17 @@ main() async {
   addPlugin(getMapperPlugin(dbManager));
   addPlugin(mvcPluggin);
   addPlugin(cookiesPlugin);
-  addPlugin(securityPlugin((Request request, String userId){
+  addPlugin(securityPlugin((Request request, String userId) {
     UserServices userServices = requestInjector.get(UserServices);
     return userServices.getUserRoles(userId);
   }, defaultRedirect: "/users/login"));
-
-
 
   //no error page
   showErrorPage = false;
 
   //file server
   setShelfHandler(createStaticHandler(env.staticFolder,
-    defaultDocument: "index.html", serveFilesOutsidePath: true));
+      defaultDocument: "index.html", serveFilesOutsidePath: true));
 
   //Start
   setupConsoleLog();
@@ -108,8 +114,33 @@ class TestRoutes {
   test(String hola) async {
     return {'hola': hola};
   }
-  @Get('/query-params')
-  testQueryParams ({@QueryParam() bool check}) => !check;
+
+  @GetView('/int-post-param')
+  testIntPostParam(@DecodeQueryParams TestClass test) {
+    return test.number != null ? (test..number += 1) : test;
+  }
+
+  @GetJson('/reflection')
+  testReflection() {
+    return reflectClass(TestClass).newInstance(
+        #fromJson, [{'number': '3'}]).reflectee;
+  }
+}
+
+class TestClass {
+  @Field() int number;
+
+  TestClass();
+
+  factory TestClass.fromStringMap (Map map) {
+    var number = int.parse(map['number']);
+    map.remove('number');
+
+    TestClass test = decode(map, TestClass);
+    test.number = number;
+
+    return test;
+  }
 }
 
 @GetJson("/users/:id/change")
@@ -133,15 +164,15 @@ newUser(String id, @Attr("dbConn") PostgreSql db, @Decode(
 
 @Interceptor(r'/.*')
 handleResponseHeader() async {
-    await chain.next();
-    return response.change(headers: _specialHeaders());
+  await chain.next();
+  return response.change(headers: _specialHeaders());
 }
 _specialHeaders() {
   var cross = {"Access-Control-Allow-Origin": "*"};
 
   if (env.buildPriority <= BuildPriority.js) {
     cross['Cache-Control'] =
-    'private, no-store, no-cache, must-revalidate, max-age=0';
+        'private, no-store, no-cache, must-revalidate, max-age=0';
   }
 
   return cross;

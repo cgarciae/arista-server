@@ -3,6 +3,7 @@ part of arista_server.controllers;
 @Controller('/api/vistas')
 class VistasServices extends PostgresController<VistaSchema>
     implements SchemaBuilder<VistaSchema> {
+
   FileServices fileServices;
   ElementosInteractivosServices elementosInteractivosServices;
   ObjetosUnityServices objetosUnityServices;

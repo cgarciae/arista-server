@@ -12,6 +12,7 @@ part 'models/local_target.dart';
 part 'models/cloud_target.dart';
 part 'models/vuforia_target_record.dart';
 part 'models/elemento_interactivos.dart';
+part 'models/tag.dart';
 
 abstract class Ref {
   String get href;

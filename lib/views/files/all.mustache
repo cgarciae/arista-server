@@ -4,12 +4,12 @@
 <br/><br/>
 <div class="container">
     {{# .}}
-    <a href="{{localhost}}/files/{{fileId}}/view" style="color: inherit; text-decoration: none;">
+    <a href="/files/{{fileId}}/view" style="color: inherit; text-decoration: none;">
         <div class="card row">
             {{# isImage}}
             <div class="card-image col s3">
                 <br/>
-                <img src="{{imageHref}}">
+                <img src="/api/files/{{fileId}}">
                 <br/>
                 <br/>
             </div>

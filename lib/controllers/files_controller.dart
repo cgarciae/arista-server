@@ -2,8 +2,9 @@ part of arista_server.controllers;
 
 @Controller('/files')
 class FilesController extends FileServices {
-  FilesController(PostgreSql conn, Env env): super(conn, env);
 
+  FilesController(PostgreSql conn, Env env): super(conn, env);
+  
   @DefaultGetView(viewSubPath: '/all')
   allFiles() async {
     var files = await find();

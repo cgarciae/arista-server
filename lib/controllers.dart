@@ -37,14 +37,18 @@ import 'package:redstone_security_plugin/redstone_security_plugin.dart' show Adm
 import 'package:http_server/src/http_body.dart';
 
 //controllers
-part 'controllers/usersController.dart';
-part 'controllers/filesController.dart';
+part 'controllers/users_controller.dart';
+part 'controllers/files_controller.dart';
+part 'controllers/home_controller.dart';
+part 'controllers/eventos_controller.dart';
 //services
-part 'services/usersServices.dart';
-part 'services/filesServices.dart';
+part 'services/users_services.dart';
+part 'services/files_services.dart';
 part 'services/elementos_interactivos_services.dart';
 part 'services/vistas_services.dart';
 part 'services/objeto_unity_services.dart';
 part 'services/local_target_services.dart';
 part 'services/cloud_target_services.dart';
 part 'services/eventos_services.dart';
+part 'services/vuforia_target_record_services.dart';
+part 'services/tag_services.dart';
