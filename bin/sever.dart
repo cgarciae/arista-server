@@ -35,7 +35,6 @@ main() async {
   var uri =
       "postgres://${env.dbUser}:${env.dbPassword}@${env.dbHost}:${env.dbPort}/${env.dbName}";
   var dbManager = new PostgreSqlManager(uri, min: 5, max: 15);
-  await dbManager.start();
   var conn = await dbManager.getConnection();
   print("Got connection");
 

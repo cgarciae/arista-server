@@ -13,3 +13,6 @@ db:
     POSTGRES_USER: arista
     POSTGRES_PASSWORD: arista1234
     PGDATA: /data/pgdata
+
+docker run -v /data:/data --name data busybox
+docker run -d -p 5432:5432 -e POSTGRES_USER=arista -e POSTGRES_PASSWORD=arista1234 -e PGDATA=/data/pgdata --volumes-from data --name db postgres

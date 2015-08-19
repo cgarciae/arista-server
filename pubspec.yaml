@@ -15,13 +15,12 @@ dependencies:
     path: "../redstone_mapper_pg"
   redstone_configuration_plugin:
     path: "../redstone_configuration_plugin"
-  redstone_mapper:
-    path: "../redstone_mapper"
+  redstone_mapper: ^0.2.0-beta.1+1
+   # path: "../redstone_mapper"
 
   redstone: '>=0.6.0-beta.1+4 < 0.7.0'
   shelf: '>=0.6.0 <0.7.0'
-  postgresql: #^0.3.1+1
-    path: "../dart_postgresql"
+  postgresql: ^0.3.1+1
   googleapis_auth: ^0.2.3+1
   googleapis: ^0.12.1
   uuid: "^0.5.0"
