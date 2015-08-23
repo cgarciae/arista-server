@@ -17,4 +17,4 @@ db:
 
 server:
   image: google/dart:1.11.3
-  command: cd /arista-server && pub get && dart bin/server.dart
+  command: sh -c 'cd /arista-server && pub get && dart bin/server.dart'
