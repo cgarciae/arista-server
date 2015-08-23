@@ -2,7 +2,7 @@ data:
   image: busybox
   volumes:
     - /data:/data
-    - /app:/app
+    - /arista-server:/arista-server
 
 db:
   image: postgres
@@ -17,4 +17,4 @@ db:
 
 server:
   image: google/dart:1.11.3
-  command: cd /app && pub get && dart bin/server.dart
+  command: cd /arista-server && pub get && dart bin/server.dart
