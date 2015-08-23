@@ -9,7 +9,7 @@
   "environments_" : {
     "current_": "dev",
     "general_": {
-      "boot2docker_ip": "192.168.59.103",
+      "boot2docker_ip": "192.168.99.101",
       "host_ip": "45.55.155.202",
       "staticFolder": "web",
       "dbUser": "arista",
@@ -21,7 +21,7 @@
       "buildPriority": 0,
       "appHost": "localhost",
       "appPort": 9090,
-      "dbHost": "192.168.59.103",
+      "dbHost": "192.168.99.101",
       "dbPort": 5432,
       "filesPath_": "{{current}}/files"
     },

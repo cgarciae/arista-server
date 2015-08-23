@@ -23,12 +23,25 @@ class UserServices extends PostgresController<UserSchema>
 
   @GetJson('/:userId/roles')
   Future<List<String>> getUserRoles(String userId) {
-    return postgreSql.innerConn.query("""
+    return innerConn.query("""
       SELECT "role"."roleName" FROM "userRoles" "userRole"
         JOIN "roles" "role" ON "userRole"."roleId" = "role"."roleId"
         JOIN "users" "user" ON "userRole"."userId" = "user"."userId"
       WHERE "user"."userId" = @userId;
     """, {primaryKeyName: userId}).map((row) => row.roleName.trim()).toList();
+  }
+
+  @PostJson('/:userId/roles')
+  Future<List<String>> newUserRoles(
+      String userId, @Body(FORM) DynamicMap maap) async {
+    await innerConn
+        .query("""INSERT INTO "userRoles" ("userRoleId", "roleId", "userId")
+     VALUES (uuid_generate_v1(),@roleId, @userId) """, {
+      "roleId": maap.roleId,
+      "userId": userId
+    }).toList();
+
+    return getUserRoles(userId);
   }
 
   Future addRole(String userId, int roleId) async {
