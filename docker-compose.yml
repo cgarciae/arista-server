@@ -18,5 +18,7 @@ db:
 server:
   image: google/dart:1.11.3
   volumes_from:
-      - data
+    - data
+  ports:
+    - "80:9090"
   command: bash -c "cd /arista-server && pub get && dart bin/server.dart"
