@@ -23,6 +23,7 @@ class UserServices extends PostgresController<UserSchema>
 
   @GetJson('/:userId/roles')
   Future<List<String>> getUserRoles(String userId) {
+
     return postgreSql.innerConn.query("""
       SELECT "role"."roleName" FROM "userRoles" "userRole"
         JOIN "roles" "role" ON "userRole"."roleId" = "role"."roleId"

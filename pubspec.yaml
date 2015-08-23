@@ -2,6 +2,9 @@ name: arista-server
 description: 
 version: 0.1.0
 author: Cristian Garcia <cgarcia.e88@gmail.com>
+dev_dependencies:
+
+
 dependencies:
   redstone_mvc:
     path: "../redstone-mvc-plugin"
@@ -25,3 +28,5 @@ dependencies:
   googleapis: ^0.12.1
   uuid: "^0.5.0"
   shelf_static: "^0.2.3"
+  test: "^0.12.4+6"
+  mockito: "^0.10.1"
