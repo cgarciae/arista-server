@@ -1,0 +1,20 @@
+data:
+  image: busybox
+  volumes:
+    - /data:/data
+    - /app:/app
+
+db:
+  image: postgres
+  volumes_from:
+    - data
+  ports:
+    - "5432:5432"
+  environment:
+    POSTGRES_USER: arista
+    POSTGRES_PASSWORD: arista1234
+    PGDATA: /data/pgdata
+
+server:
+  image: google/dart:1.11.3
+  command: cd /app && pub get && dart bin/server.dart

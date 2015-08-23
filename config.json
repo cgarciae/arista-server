@@ -21,7 +21,7 @@
       "buildPriority": 0,
       "appHost": "localhost",
       "appPort": 9090,
-      "dbHost": "192.168.99.101",
+      "dbHost": "192.168.59.103",
       "dbPort": 5432,
       "filesPath_": "{{current}}/files"
     },
@@ -32,7 +32,7 @@
       "appPort": 80,
       "dbHost": "db",
       "dbPort": 5432,
-      "filesPath": "/data/files"
+      "filesPath_": "/data/files"
     }
   }
 }

@@ -5,9 +5,6 @@ import 'package:redstone_mapper/mapper.dart';
 //path
 import 'package:path/path.dart' as path;
 
-
-
-
 class Env {
   @Field() String name;
   @Field() int buildPriority;
