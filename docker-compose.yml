@@ -19,4 +19,4 @@ server:
   image: google/dart:1.11.3
   volumes_from:
       - data
-  command: sh -c 'cd /arista-server && pub get && dart bin/server.dart'
+  command: bash -c "cd /arista-server && pub get && dart bin/server.dart"
