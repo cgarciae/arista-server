@@ -6,18 +6,18 @@ dev_dependencies:
 
 
 dependencies:
-  redstone_mvc:
-    path: "../redstone-mvc-plugin"
-  redstone_headers_plugin:
-    path: "../redstone-headers-plugin"
-  redstone_cookies_plugin:
-    path: "../redstone_cookies_plugin"
-  redstone_security_plugin:
-    path: "../redstone_security_plugin"
-  redstone_mapper_pg:
-    path: "../redstone_mapper_pg"
-  redstone_configuration_plugin:
-    path: "../redstone_configuration_plugin"
+  redstone_mvc: ^0.3.0+1
+    # path: "../redstone-mvc-plugin"
+  redstone_headers_plugin: ^0.0.1+1
+    # path: "../redstone-headers-plugin"
+  redstone_cookies_plugin: ^0.0.1+1
+    # path: "../redstone_cookies_plugin"
+  redstone_security_plugin: ^0.0.1+1
+    # path: "../redstone_security_plugin"
+  redstone_mapper_pg: ^0.2.0-beta.2+2
+    # path: "../redstone_mapper_pg"
+  redstone_configuration_plugin: ^0.0.1+1
+    # path: "../redstone_configuration_plugin"
   redstone_mapper: ^0.2.0-beta.1+1
    # path: "../redstone_mapper"
 
