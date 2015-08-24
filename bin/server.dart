@@ -24,6 +24,9 @@ import 'dart:mirrors';
 Env env;
 
 main() async {
+
+  print("INIT ARISTA SERVER");
+
   bootstrapMapper();
   //Build configuration
   var configurationBuilder = new ConfigurationBuilder()
