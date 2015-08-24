@@ -3,7 +3,7 @@
     "identifier": "287932517253-d6fp73ms7d33ith6r561p1g225q5th0h.apps.googleusercontent.com",
     "secret": "13COFGOsXLcu2PQNN5YdRcin",
     "scopes": ["openid", "email"],
-    "redirectUrl": "http://localhost:9090/users/authenticate"
+    "redirectUrl": "http://45.55.199.235/users/authenticate"
   },
 
   "environments_" : {
@@ -14,13 +14,13 @@
       "staticFolder": "web",
       "dbUser": "arista",
       "dbPassword": "arista1234",
-      "dbName": "postgres"
+      "dbName": "postgres",
+      "appPort": 9090
     },
     "dev": {
       "name": "dev",
       "buildPriority": 0,
       "appHost": "localhost",
-      "appPort": 9090,
       "dbHost": "192.168.59.103",
       "dbPort": 5432,
       "filesPath_": "{{current}}/files"
@@ -29,7 +29,6 @@
       "name": "prod",
       "buildPriority": 3,
       "appHost": "45.55.155.202",
-      "appPort": 80,
       "dbHost": "db",
       "dbPort": 5432,
       "filesPath_": "/data/files"
