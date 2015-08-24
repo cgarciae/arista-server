@@ -10,7 +10,7 @@
     "current_": "prod",
     "general_": {
       "boot2docker_ip": "192.168.99.101",
-      "host_ip": "45.55.155.202",
+      "host_ip": "45.55.199.235",
       "staticFolder": "web",
       "dbUser": "arista",
       "dbPassword": "arista1234",
@@ -28,7 +28,7 @@
     "prod": {
       "name": "prod",
       "buildPriority": 3,
-      "appHost": "45.55.155.202",
+      "appHost": "45.55.199.235",
       "dbHost": "db",
       "dbPort": 5432,
       "filesPath_": "/data/files"
