@@ -16,7 +16,7 @@ dependencies:
     # path: "../redstone_security_plugin"
   redstone_mapper_pg: ^0.2.0-beta.2+2
     # path: "../redstone_mapper_pg"
-  redstone_configuration_plugin: ^0.0.1+1
+  redstone_configuration_plugin: ^0.0.1+2
     # path: "../redstone_configuration_plugin"
   redstone_mapper: ^0.2.0-beta.1+1
    # path: "../redstone_mapper"
