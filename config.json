@@ -3,7 +3,7 @@
     "identifier": "287932517253-d6fp73ms7d33ith6r561p1g225q5th0h.apps.googleusercontent.com",
     "secret": "13COFGOsXLcu2PQNN5YdRcin",
     "scopes": ["openid", "email"],
-    "redirectUrl": "http://45.55.199.235/users/authenticate"
+    "redirectUrl": "http://aristadev.com/users/authenticate"
   },
 
   "environments_" : {
@@ -21,7 +21,7 @@
       "name": "dev",
       "buildPriority": 0,
       "appHost": "localhost",
-      "dbHost": "192.168.59.103",
+      "dbHost": "192.168.99.101",
       "dbPort": 5432,
       "filesPath_": "{{current}}/files"
     },
