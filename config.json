@@ -7,7 +7,7 @@
   },
 
   "environments_" : {
-    "current_": "dev",
+    "current_": "prod",
     "general_": {
       "boot2docker_ip": "192.168.99.101",
       "host_ip": "45.55.199.235",
