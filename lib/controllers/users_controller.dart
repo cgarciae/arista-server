@@ -50,6 +50,7 @@ class UsersController extends UserServices {
       """, values: user);
     }
 
+    return redirect('/home');
     return new shelf.Response.ok(encodeJson(user),
         headers: {
       "Set-Cookie": new ck.Cookie('userId', user.userId).toString()

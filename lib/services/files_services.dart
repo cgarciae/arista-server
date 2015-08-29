@@ -16,7 +16,7 @@ class FileServices extends PostgresController<FileSchema> {
     var fileContent = getContentFromBodyFile(file);
     await writeFile(fileDb.fileId, fileContent);
     await insert(fileDb, correctMap: (map) {
-      map.fileUploadDate = fileDb.fileUploadDate;
+      map.fileUploadDate = fileDb.fileUploadDate.toUtc();
     });
 
     return fileDb;

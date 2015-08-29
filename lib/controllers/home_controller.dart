@@ -12,5 +12,8 @@ class HomeController {
 
   HomeController(this.usersServices, this.eventosServices, this.postgreSql);
 
+  @DefaultGetView(viewLocalPath: '/index')
+  index() => {'welcome': 'Bienvenido a Arista' };
+
 
 }

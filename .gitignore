@@ -2,6 +2,7 @@
 .buildlog
 .pub/
 build/
+files/
 packages
 .packages
 

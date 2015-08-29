@@ -1,4 +1,4 @@
-part of arista_server.models;
+ part of arista_server.models;
 
 class FileSchema
 {
