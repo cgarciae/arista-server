@@ -16,7 +16,7 @@ class VistaSchema {
 }
 
 class Vista3D extends VistaSchema {
-  @Field() final String type__ = "FALTA";//TODO: FALTA
+  @Field() final String type__ = "Arista.Models.Vista3D, Assembly-CSharp";//TODO: FALTA
   @Field() User owner;
   @Field() ObjetoUnity objetoUnity;
   @Field() LocalTarget localTarget;

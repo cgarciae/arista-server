@@ -5,7 +5,7 @@ class ObjetoUnitySchema {
   @Field() String nombre;
   @Field() String descripcion;
   @Field() bool public;
-  @Field() List<TagSchema> tags;
+
 
   @Field() String ownerId;
   @Field() String userFileId;
@@ -25,7 +25,7 @@ class ObjetoUnity extends ObjetoUnitySchema {
 
   @Field() User owner;
   @Field() FileSchema userFile;
-
+  @Field() List<TagSchema> tags;
   @Field() bool get active => notNullOrEmpty (androidId) && notNullOrEmpty (iosId);
   @Field() bool get activeAll => notNullOrEmpty (androidId) && notNullOrEmpty (iosId) && notNullOrEmpty (windowsId) && notNullOrEmpty (osxId);
 
