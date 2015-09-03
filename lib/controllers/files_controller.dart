@@ -1,6 +1,7 @@
 part of arista_server.controllers;
 
 @Controller('/files')
+@AdmittedRoles(const [Role.admin])
 class FilesController extends FileServices {
 
   FilesController(PostgreSql conn, Env env): super(conn, env);
