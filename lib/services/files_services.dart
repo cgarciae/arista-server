@@ -45,9 +45,12 @@ class FileServices extends PostgresController<FileSchema> {
   @Get('/:id')
   Future<shelf.Response> downloadFile(String id) async {
     try {
-      var metadata = await getMetadata(id);
+      FileSchema metadata = await getMetadata(id);
       return new shelf.Response.ok(readFile(id),
-          headers: {"Content-Type": metadata.contentType});
+          headers: {
+            "Content-Type": metadata.contentType,
+            "Content-Disposition": "attachment; filename=${metadata.filename};"
+          });
     } catch (e, s) {
       return new shelf.Response.ok("Server Error: $e \n $s");
     }
