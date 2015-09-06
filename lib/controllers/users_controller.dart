@@ -45,16 +45,14 @@ class UsersController extends UserServices {
       await insert(user);
       await addRole(user.userId, 2);
     } else {
-      user = await findOne(condition: """
+      user = await findOne( condition: """
         "email" = @email
-      """, values: user);
+      """,
+          values: user);
     }
 
-    return redirect('/home');
-    return new shelf.Response.ok(encodeJson(user),
-        headers: {
-      "Set-Cookie": new ck.Cookie('userId', user.userId).toString()
-    });
+    return redirect('/home').change(headers:
+        {"Set-Cookie": new ck.Cookie('userId', user.userId).toString()});
   }
 
   String authenticationUri(
@@ -69,7 +67,9 @@ class UsersController extends UserServices {
     if (state != null) {
       queryValues.add('state=${Uri.encodeQueryComponent(state)}');
     }
-    return Uri.parse('https://accounts.google.com/o/oauth2/auth'
-        '?${queryValues.join('&')}').toString();
+    return Uri
+        .parse('https://accounts.google.com/o/oauth2/auth'
+            '?${queryValues.join('&')}')
+        .toString();
   }
 }
