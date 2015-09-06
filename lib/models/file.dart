@@ -7,4 +7,5 @@ class FileSchema
   @Field() String contentType;
   @Field() DateTime fileUploadDate;
   @Field() String ownerId;
+  @Field() int version;
 }

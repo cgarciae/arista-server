@@ -11,6 +11,7 @@
                         <p style="overflow: hidden;"><b>File name:</b> <i>{{filename}}</i></p>
                         <p><b>Content Type:</b> {{contentType}}</p>
                         <p><b>Upload Date:</b> {{fileUploadDate}}</p>
+                        <p><b>Version:</b> {{version}}</p>
                     </div>
                     {{# isImage}}
                     <div class="card-image">
@@ -28,6 +29,10 @@
                                 <input type="file" name="file"/>
                             </div>
                             <input class="file-path validate" type="text" name="filename"/>
+                        </div>
+                        <div class="input-field col s6">
+                            <input value="{{version}}" class="file-path validate" type="text" name="version"/>
+                            <label for="version">Version</label>
                         </div>
                         <br/>
                         <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar

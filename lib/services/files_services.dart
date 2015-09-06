@@ -11,7 +11,8 @@ class FileServices extends PostgresController<FileSchema> {
       ..fileId = new Uuid().v1()
       ..fileUploadDate = new DateTime.now()
       ..filename = filename != null ? filename : file.filename
-      ..contentType = file.contentType.value;
+      ..contentType = file.contentType.value
+      ..version = 1;
 
     var fileContent = getContentFromBodyFile(file);
     await writeFile(fileDb.fileId, fileContent);

@@ -17,12 +17,33 @@ class FilesController extends FileServices {
   @Post('/upload', allowMultipartRequest: true)
   uploadFile(@Body(FORM) DynamicMap form) async {
     var fileDb = await newFile(form.file, filename: form.filename);
+
+    await updateMetadata(fileDb.fileId, new FileSchema()
+      ..version = form.version.trim() == "" ? 1 : int.parse(form.version)
+    );
     return redirect('/files/${fileDb.fileId}/view');
   }
 
   @Post ('/:fileId/change', allowMultipartRequest: true)
   changeFile (String fileId, @Body(FORM) DynamicMap form) async {
-    await updateFile(fileId, form.file);
+    HttpBodyFileUpload file = form.file;
+    print(file);
+    if (file == null || file.content.length < 1){
+      await updateMetadata(fileId, new FileSchema()
+        ..version = int.parse(form.version)
+      );
+    }
+    else{
+      await updateFile(fileId, form.file);
+      await updateMetadata(fileId, new FileSchema()
+        ..version = int.parse(form.version)
+        ..filename = file.filename
+        ..contentType = file.contentType.value
+      );
+    }
+
+
+
     return redirect('/files/$fileId/view');
   }
 
