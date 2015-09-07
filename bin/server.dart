@@ -20,6 +20,7 @@ import 'package:arista-server/config.dart';
 import 'package:arista-server/controllers.dart';
 //import 'package:arista-server/models.dart';
 import 'dart:mirrors';
+import 'dart:convert';
 
 Env env;
 
@@ -42,7 +43,7 @@ main() async {
   print("Got connection");
 
   //Mvc Configuration
-  configureMvc();
+  configureMvc(new MvcConfig(encoding:LATIN1));
 
   //DI
   var requestModule = new Module()

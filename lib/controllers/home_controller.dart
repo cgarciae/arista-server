@@ -3,7 +3,6 @@ part of arista_server.controllers;
 @Action('/')
 rootRedirect() => redirect('/home');
 
-@AdmittedRoles(const [Role.user], failureRedirect: '/users/login')
 @Controller('/home')
 class HomeController {
   UserServices usersServices;
@@ -12,8 +11,8 @@ class HomeController {
 
   HomeController(this.usersServices, this.eventosServices, this.postgreSql);
 
-  @DefaultGetView(viewLocalPath: '/index')
-  index() => {'welcome': 'Bienvenido a Arista' };
+  @DefaultGetView(viewLocalPath: '/index', ignoreMaster:true)
+  index() => {};
 
 
 }

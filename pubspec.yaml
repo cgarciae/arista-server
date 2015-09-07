@@ -6,7 +6,7 @@ dev_dependencies:
 
 
 dependencies:
-  redstone_mvc: ^0.3.0+1
+  redstone_mvc: ^0.3.0+3
     # path: "../redstone-mvc-plugin"
   redstone_headers_plugin: ^0.0.1+1
     # path: "../redstone-headers-plugin"

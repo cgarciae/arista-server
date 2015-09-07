@@ -1,7 +1,288 @@
-<div class="container">
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){
+            event.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
+    });
+</script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" id="sourcecode">
+    $(function()
+    {
+        $('.scroll-pane').jScrollPane();
+    });
+</script>
+
+<div class="header">
     <div class="container">
-        <div class="container">
-            {{welcome}}
+        <div class="logo">
+            <a href="/home"><img src="images/logo Arista.png" alt=""></a>
+        </div>
+        <div class="menu">
+            <ul class="menu-top">
+                <li><a href="/users/login" >Ingresa</a></li>
+                <!--<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog">Ingresa</a></li>-->
+                <!--<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog1">Registrate</a></li>-->
+            </ul>
+            <!---pop-up-box---->
+            <script type="text/javascript" src="js/modernizr.custom.min.js"></script>
+            <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+            <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+            <!---//pop-up-box---->
+            <div id="small-dialog" class="mfp-hide">
+                <div class="login">
+                    <h3>Ingresa</h3>
+                    <h4>Ya eres miembro?</h4>
+                    <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
+                    <input type="password" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"/>
+                    <input type="submit" value="Ingresar" />
+                </div>
+            </div>
+            <div id="small-dialog1" class="mfp-hide">
+                <!--<div class="signup">
+                    <h3>Registrate</h3>
+                    <h4>Ingresa la información aqui</h4>
+                    <input type="text" value="Nombre" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}" />
+                    <input type="text" value="Apellidos" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Second Name';}" />
+                    <input type="text" class="email"value="Ingresa Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}"  />
+                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"/>
+                    <input type="submit"  value="Resgistrarse"/>
+                </div>-->
+            </div>
+            <script>
+                var menu = {
+                    type: 'inline',
+                    fixedContentPos: false,
+                    fixedBgPos: true,
+                    overflowY: 'auto',
+                    closeBtnInside: true,
+                    preloader: false,
+                    midClick: true,
+                    removalDelay: 300,
+                    mainClass: 'my-mfp-zoom-in'
+                };
+
+                $(document).ready(function() {
+                    $('.popup-with-zoom-anim').magnificPopup(menu);
+                    $('#toTop').magnificPopup(menu);
+
+                });
+            </script>
+            <a href="#" class="right_bt" id="activator"><img src="images/nav.png" alt=""/></a>
+            <div class="box" id="box">
+                <div class="box_content_center">
+                    <div class="menu_box_list">
+                        <ul>
+                            <li><a href="#home" class="scroll">Inicio</a></li>
+                            <li class="active"><a href="#about" class="scroll">Nuestro concepto</a></li>
+                            <li><a href="#interduce" class="scroll">Conócenos</a></li>
+                            <li><a href="#top" class="scroll">Nuestros Clientes</a></li>
+                        </ul>
+                    </div>
+                    <a class="boxclose" id="boxclose"><img src="images/close.png" alt=""/></a>
+                </div>
+            </div>
+            <script type="text/javascript" src="js/easing.js"></script>
+            <script type="text/javascript">
+                var $ = jQuery.noConflict();
+                $(function() {
+                    $('#activator').click(function(){
+                        $('#box').animate({'top':'0px'},500);
+                    });
+                    $('#boxclose').click(function(){
+                        $('#box').animate({'top':'-700px'},500);
+                    });
+                });
+                $(document).ready(function(){
+
+                    //Hide (Collapse) the toggle containers on load
+                    $(".toggle_container").hide();
+
+                    //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+                    $(".trigger").click(function(){
+                        $(this).toggleClass("active").next().slideToggle("slow");
+                        return false; //Prevent the browser jump to the link anchor
+                    });
+
+                });
+            </script>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="header-bottom">
+            <p>Entra al futuro de la publicidad para el sector inmobiliario</p>
+            <h1>Publicidad Aumentada</h1>
+            <a href="#about">Conoce más</a>
         </div>
     </div>
+</div>
+<!--- Header Ends Here --->
+<!-- Aboutus Starts Here --->
+<div class="aboutus" id="about">
+    <div class="container">
+        <div class="row aboutus-row">
+            <div class="col-md-4 aboutus-row-column">
+                <i class="icon1"></i>
+                <h3>CONOCE A TUS CLIENTES</h3>
+                <p>Registra/captura datos de tus usuarios y obten la capacidad que te contacten inmediatamente desde tu experiencia móvil.</p>
+            </div>
+            <div class="col-md-4 aboutus-row-column">
+                <i class="icon2"></i>
+                <h3>ADMINISTRACIÓN WEB</h3>
+                <p>Crea y modifica todas tus experiencias móviles desde web. </p>
+            </div>
+            <div class="col-md-4 aboutus-row-column">
+                <i class="icon3"></i>
+                <h3>MODELOS 3D</h3>
+                <p>Añade los modelos 3D de tus inmuebles a tu experiencia móvil y muestralos en Realidad Aumentada para cautivar a tu público.</p>
+            </div>
+            <div class="col-md-4 aboutus-row-column">
+                <i class="icon4"></i>
+                <h3>REDUCE TU TIEMPO DE VENTA</h3>
+                <p>Genera emoción y confianza al permitirle a tus clientes que visualicen y recorran tu inmueble en Realidad Aumentada o Virtual y obtengan toda la información del proyecto que necesitan. </p>
+            </div>
+            <div class="col-md-4 aboutus-row-column">
+                <i class="icon5"></i>
+                <h3>ACERCATE A TUS CLIENTES</h3>
+                <p>Permiteles resolver todas las dudas desde su casa con su familia y conce?ntrate en la venta cuando visiten a tus asesores. </p>
+            </div>
+            <div class="col-md-4 aboutus-row-column">
+                <i class="icon6"></i>
+                <h3>VENDE A DISTANCIA</h3>
+                <p>Lleva tu inmueble a cualquier lugar del mundo con la informacio?n y beneficios de cada espacio mediante tu experiencia móvil interativa. </p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</div>
+<!-- Aboutus Ends Here --->
+<!-- Interduce Starts Here  ---->
+<div class="interduce" id="interduce">
+    <div class="container">
+        <div class="row interduce-row">
+            <div class="col-md-6 inter-row-column">
+                <h4><span>INTRODUCCIÓN</span> ARISTA APP</h4>
+                <p>Arista es un App que te permite crear y compartir Experiencias Móviles Interactivas con aplicativos para aumentar tus oportunidades comerciales.  </p>
+                <p>Puedes asociar tu experiencia a una imagen o ubicación para que tus usuarios la abran fácilmente. </p>
+                <p>Crea experiencias únicas con Realidad Aumentada, Multimedia, Geolocalización y Aplicativos Comerciales.
+                </p>
+                <ul class="inter-duce">
+                    <!--<li><i class="icon4"></i></li>-->
+                    <li><a class="icon5" href="https://play.google.com/store/apps/details?id=com.hginnovacion.AristaConstruccionDemo&hl=es_419"><img src ="/images/icon4.png"></a></li>
+                    <li><a class="icon6" href="https://drive.google.com/open?id=0B2tjZs6wRbVkNEJGOS1YUlZPVWM&authuser=0"><img src="/images/portafoliopng-16.png"></a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 inter-row-column2">
+                <img src="images/iphone.png" alt=""/>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- Interduce Ends Here  ---->
+<!--- Slider Starts Here --->
+<div class="slider">
+    <div class="container">
+        <div class="slider-content">
+            <script src="js/responsiveslides.min.js"></script>
+            <script>
+                // You can also use "$(window).load(function() {"
+                $(function () {
+                    // Slideshow 4
+                    $("#slider4").responsiveSlides({
+                        auto: true,
+                        pager: true,
+                        nav: true,
+                        speed: 500,
+                        namespace: "callbacks",
+                        before: function () {
+                            $('.events').append("<li>before event fired.</li>");
+                        },
+                        after: function () {
+                            $('.events').append("<li>after event fired.</li>");
+                        }
+                    });
+
+                });
+            </script>
+            <!----//End-slider-script---->
+            <!-- Slideshow screenshot -->
+            <div  id="top" class="callbacks_container">
+                <ul class="rslides" id="slider4">
+                    <li>
+                        <div class="slider-top">
+                            <img src="http://arista.meteor.com/images/eafit.png" alt=""/>
+                            <p>"información tridimensional sobre estructuras reales. Con esta aplicaciones el usuario puede explorar la Universidad EAFIT desde cualquier ángulo con RA, e interactuar con los edificios mediante gestos para explorarlos con más detalle. Una versión anterior de Campus EAFIT fue demostrada en Virtual Educa (Panamá)."</p>
+                            <p class="below">-Campus, Universidad EAFIT</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slider-top">
+                            <img src="http://arista.meteor.com/images/italia.png" alt=""/>
+                            <p class="second-slide">"En EXPO Camacol 2012 se realizó una experiencia para Cerámica Italia; se transmitía a dos pantallas una casa mágica, que permitía cambiar en tiempo real al modelo, la cerámica que más le gustase al visitante en cada ambiente según la colección D-Tech. Experiencia de gran acogida con descargas post evento de hasta 100 diarias."</p>
+                            <p class="below">-D-TECH, Ceramica Italia</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slider-top">
+                            <img src="http://arista.meteor.com/images/inexmoda.png" alt=""/>
+                            <p>"Inexmoda tenía una preocupación con un subevento llamado el Foro de la Moda, que en años anteriores no habia tenido mayor acogida; pero debido a su nivel informativo querían darle mayor flujo de personas. La Realidad Aumentada desarrollada para el evento no solo aumentó considerablemente el tráfico de personas en el lugar si no en redes sociales."</p>
+                            <p class="below">-Foro de la moda, ColombiaModa</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <!--- banner Slider Ends Here --->
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!--- Slider Ends Here --->
+
+<!-- Footer Starts Here ---->
+<div class="footer">
+    <div class="container">
+        <div class="logo">
+            <a href="/home"><img src="images/Logo ARISTA MORADO.png" class="foot-img" alt=""></a>
+        </div>
+        <div class="fb">
+            <a href="https://www.facebook.com/aristadev"><img src="images/fb.png" class="foot-img" alt=""></a>
+        </div>
+        <div class="clearfix"></div>
+        <p class="footer-head">Medellín | Colombia |<a href="mailto:info@aristadev.com?subject=Informacion%20Realidad%20Aumentada+++++++++++++++++++++++&amp;body=Hola!%20Estoy%20interesado%20en%20recibir%20mas%20informacion%20sobre%20la%20plataforma%20Arista." target="_blank">info<span>@</span>aristadev.com </a> | (57) 317 257 71 84 | (57) 314 862 79 78 |  Todos los derechos reservados 2014 <a href="#"> ARISTA DEV SAS</a></p>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+                  containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+             };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 </div>
