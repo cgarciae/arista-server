@@ -7,7 +7,7 @@
   },
 
   "environments_" : {
-    "current_": "prod",
+    "current_": "dev1",
     "general_": {
       "boot2docker_ip": "192.168.99.101",
       "host_ip": "45.55.199.235",
@@ -15,22 +15,31 @@
       "dbUser": "arista",
       "dbPassword": "arista1234",
       "dbName": "postgres",
-      "appPort": 9090,
-      "filesPath_": "{{current}}/files"
+      "appPort": 9090
+    },
+	"dev1": {
+      "name": "dev",
+      "buildPriority": 0,
+      "appHost": "localhost",
+      "dbHost": "192.168.99.101",
+      "dbPort": 5432,
+      "filesPath_": "/app/data/files"
     },
     "dev": {
       "name": "dev",
       "buildPriority": 0,
       "appHost": "localhost",
       "dbHost": "192.168.99.101",
-      "dbPort": 5432
+      "dbPort": 5432,
+      "filesPath_": "{{current}}/files"
     },
     "prod": {
       "name": "prod",
       "buildPriority": 3,
       "appHost": "45.55.199.235",
       "dbHost": "db",
-      "dbPort": 5432
+      "dbPort": 5432,
+      "filesPath_": "/app/data/files"
     }
   }
 }

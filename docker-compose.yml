@@ -1,8 +1,9 @@
 data:
   image: busybox
   volumes:
-    - /data:/data
-    - /arista-server:/arista-server
+    #- /data:/arista-server/data
+    #- /arista-server:/app/arista-server
+	- /app:/app
 
 db:
   image: postgres
@@ -13,7 +14,7 @@ db:
   environment:
     POSTGRES_USER: arista
     POSTGRES_PASSWORD: arista1234
-    PGDATA: /data/pgdata
+    PGDATA: /app/data/pgdata
 
 server:
   image: google/dart:1.11.3
@@ -23,4 +24,4 @@ server:
    - db
   ports:
     - "80:9090"
-  command: bash -c "cd /arista-server && pub get && dart bin/server.dart"
+  command: bash -c "cd /app/arista-server && pub get && dart bin/server.dart"
