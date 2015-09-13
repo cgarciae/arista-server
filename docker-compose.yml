@@ -1,9 +1,7 @@
 data:
   image: busybox
   volumes:
-    #- /data:/arista-server/data
-    #- /arista-server:/app/arista-server
-	- /app:/app
+    - /app:/app
 
 db:
   image: postgres
